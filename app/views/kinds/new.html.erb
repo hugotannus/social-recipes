@@ -1,10 +1,10 @@
 <section>
 
-  <h2>Nova Cozinha</h2>
+  <h2>Novo Tipo de Receita</h2>
 
   <hr>
 
-  <%= form_for @cuisine do |f| %>
+  <%= form_for @kind do |f| %>
     <div class="form-group">
       <%= f.label :name, 'Nome' %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -12,7 +12,7 @@
 
     <div class="actions form-group">
       <%= f.button class:'btn btn-success' do %>
-        <%= fa_icon 'plus lg', text: 'Criar Cozinha' %>
+        <%= fa_icon 'plus lg', text: 'Criar Tipo de Receita' %>
       <% end %>
     </div>
   <% end %>
