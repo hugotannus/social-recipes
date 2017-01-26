@@ -9,7 +9,7 @@ feature 'Admin creates a new cuisine' do
     visit new_cuisine_path
 
     fill_in 'Nome', with: cuisine.name
-    click on 'Criar Cozinha'
+    click_on 'Criar Cozinha'
 
     #expectation
     expect(page).to have_content 'Cozinha'
@@ -19,7 +19,7 @@ feature 'Admin creates a new cuisine' do
   scenario 'and should fill all fields' do
     #exercise
     visit new_cuisine_path
-    click on 'Criar Cozinha'
+    click_on 'Criar Cozinha'
 
     #expectation
     expect(page).to have_content 'Não foi possível criar a cozinha.'

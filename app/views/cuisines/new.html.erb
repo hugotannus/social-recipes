@@ -1,0 +1,21 @@
+<section>
+  <h2>Nova Categoria</h2>
+
+  <hr>
+
+  <%= form_for @cuisine do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'Nome' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="actions form-group">
+      <div class="col-sm-offset-1 col-sm-5">
+        <%= f.button class:'btn btn-success' do %>
+          <i class="fa fa-plus fa-lg"></i> Criar Cozinha
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</section>
