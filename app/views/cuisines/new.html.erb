@@ -1,5 +1,6 @@
 <section>
-  <h2>Nova Categoria</h2>
+
+  <h2>Nova Cozinha</h2>
 
   <hr>
 
@@ -10,11 +11,9 @@
     </div>
 
     <div class="actions form-group">
-      <div class="col-sm-offset-1 col-sm-5">
-        <%= f.button class:'btn btn-success' do %>
-          <i class="fa fa-plus fa-lg"></i> Criar Cozinha
-        <% end %>
-      </div>
+      <%= f.button class:'btn btn-success' do %>
+        <%= icon 'plus', 'Criar Cozinha' %>
+      <% end %>
     </div>
   <% end %>
 

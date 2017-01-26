@@ -9,18 +9,20 @@
   </head>
 
   <body>
-    <header>
-      <h1>Social Recipes</h1>
-    </header>
+    <div class="container">
+      <header>
+        <h1>Social Recipes</h1>
+      </header>
 
-    <main>
-      <% if flash[:notice] %>
-      <div class="alert alert-danger" role="alert">
-        <strong>Oops! </strong> <%= flash[:notice] %>
-      </div>
-      <% end %>
+      <main>
+        <% if flash[:notice] %>
+        <div class="alert alert-danger" role="alert">
+          <strong>Oops! </strong> <%= flash[:notice] %>
+        </div>
+        <% end %>
 
-      <%= yield %>
-    </main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
