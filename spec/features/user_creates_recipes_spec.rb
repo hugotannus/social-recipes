@@ -6,17 +6,17 @@ feature 'User sends a new recipe' do
     cuisine = Cuisine.new(name: 'brasileira')
     kind    = Kind.new(name: 'sobremesas')
 
-    receita = Recipe.new( title: 'pudim',
+    recipe = Recipe.new( title: 'pudim',
                           cuisine: cuisine,
                           kind: kind,
                           portions: 6,
-                          preparation: 20,
-                          difficulty: 'fácil'
+                          prep_time: 20,
+                          difficulty: 'fácil',
                           ingredients: '- 1 lata de leite condensado\n
-                          - 2 latas de leite (use a lata de leite condensado como medida)\n
+                          - 2 latas de leite (use a lata de leite  condensado como medida)\n
                           - 4 ovos\n
                           - 1/2 xícara de açúcar\n
-                          - 1/3 xícara de água'
+                          - 1/3 xícara de água',
                           directions: '1. Prepare o pudim batendo todos os ingredientes no liquidificador\n
                           2. Prepare a calda colocando água e açúcar em uma forma refratária com buraco no meio, de 24 cm de diâmetro\n
                           3. Leve ao microondas na temperatura máxima por 8 minutos, até caramelizar o açúcar\n
@@ -31,23 +31,23 @@ feature 'User sends a new recipe' do
       #exercise
       visit new_recipe_path
 
-      fill_in 'Título',           with receita.title
-      select  cuisine.name,       from 'Cozinha'
-      select  kind.name,          from 'Tipo de Receita'
-      fill_in 'Rendimento',       with receita.portions
-      fill_in 'Tempo de preparo', with receita.preparation
-      select  receita.difficulty, from 'Dificuldade'
-      fill_in 'Ingredientes',     with receita.ingredients
-      fill_in 'Modo de preparo',  with receita.directions
+      fill_in 'Título',           with: recipe.title
+      select  cuisine.name,       from: 'Cozinha'
+      select  kind.name,          from: 'Tipo de Receita'
+      fill_in 'Rendimento',       with: recipe.portions
+      fill_in 'Tempo de preparo', with: recipe.preparation
+      select  recipe.difficulty,  from: 'Dificuldade'
+      fill_in 'Ingredientes',     with: recipe.ingredients
+      fill_in 'Modo de preparo',  with: recipe.directions
 
       click_on 'Criar Receita'
 
       #expectations
-      expect(page).to have_css('h1', text: receita.title)
-      expect(page).to have_content receita.cuisine.name
-      expect(page).to have_content receita.kind.name
-      expect(page).to have_content receita.difficulty
-      expect(page).to have_content `#{receita.preparation} minutos`
+      expect(page).to have_css('h1', text: recipe.title)
+      expect(page).to have_content recipe.cuisine.name
+      expect(page).to have_content recipe.kind.name
+      expect(page).to have_content recipe.difficulty
+      expect(page).to have_content `#{recipe.preparation} minutos`
   end
 
   scenario 'and should fill all fields' do
