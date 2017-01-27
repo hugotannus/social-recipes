@@ -1,0 +1,17 @@
+<h1><%= @recipe.title %></h1>
+<dl class="dl-horizontal">
+  <dt>Cozinha</dt>
+  <dd><%= @recipe.cuisine.name %></dd>
+  <dt>Tipo de Receita</dt>
+  <dd><%= @recipe.kind.name %></dd>
+  <dt>Rendimento</dt>
+  <dd><%= @recipe.portions %></dd>
+  <dt>Tempo de preparo</dt>
+  <dd><%= @recipe.prep_time %> minutos</dd>
+  <dt>Dificuldade</dt>
+  <dd><%= @recipe.difficulty %></dd>
+  <dt>Ingredientes</dt>
+  <dd><%= @recipe.ingredients %></dd>
+  <dt>Modo de preparo</dt>
+  <dd><%= @recipe.directions %></dd>
+</dl>
