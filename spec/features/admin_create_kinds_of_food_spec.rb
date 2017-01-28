@@ -13,7 +13,7 @@ feature 'Admin creates a new kind of food' do
 
     #expectation
     expect(page).to have_content 'Tipo de Receita'
-    expect(page).to have_content kind.name
+    expect(page).to have_content kind.name.downcase
   end
 
   scenario 'and should fill all fields' do
