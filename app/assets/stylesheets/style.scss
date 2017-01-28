@@ -1,4 +1,104 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "font-awesome";
+
+/* variables */
+$light-grey: #777;
+$lighter-grey: #888;
+$dark-grey: #555;
+
+/* universal */
+html {
+  font-size: 10px;
+}
+
+body {
+  padding-top: 6.0rem;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 1.0rem;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3.0rem;
+  letter-spacing: -0.2rem;
+  margin-bottom: 3.0rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.2em;
+  letter-spacing: -0.1rem;
+  margin-bottom: 3.0rem;
+  text-align: center;
+  font-weight: normal;
+  color: $light-grey;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 1.0rem;
+  margin-left: 0.2rem;
+  font-size: 2.5rem;
+  color: $dark-grey;
+  text-transform: uppercase;
+  letter-spacing: -0.1rem;
+  padding-top: 1.1rem;
+  font-weight: 400;
+  &:hover {
+    color: $dark-grey;
+    text-decoration: none;
+  }
+}
+
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  a {
+    color: #555;
+    &:hover {
+      color: #222;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
