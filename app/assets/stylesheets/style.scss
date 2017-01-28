@@ -2,10 +2,17 @@
 @import "bootstrap";
 @import "font-awesome";
 
-/* variables */
+/* variables & mixins*/
+
 $light-grey: #777;
 $lighter-grey: #888;
 $dark-grey: #555;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
 
 /* universal */
 html {
@@ -76,7 +83,6 @@ p {
   }
 }
 
-
 /* footer */
 
 footer {
@@ -101,4 +107,16 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  background-color: cornsilk;
+  @include box_sizing;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
