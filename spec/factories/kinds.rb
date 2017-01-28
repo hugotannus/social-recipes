@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :kind do
-    name "MyString"
+    name "fast plates"
   end
 end

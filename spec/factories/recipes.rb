@@ -1,12 +1,18 @@
 FactoryGirl.define do
+  r = Random.new
+  plates = ['sandwich', 'soup', 'pancake', 'pasta', 'cookies']
+
   factory :recipe do
-    title "MyString"
-    portions 1
-    prep_time 1
-    difficulty 1
-    ingredients "MyText"
-    directions "MyText"
-    cuisine nil
-    kind nil
+    title   "#{Faker::LordOfTheRings.character}\'s #{plates[r.rand(0...plates.size)]}"
+    portions r.rand(1...8)
+    prep_time (r.rand(2...36) * 5 )
+    difficulty r.rand(0..2)
+    ingredients (0 .. r.rand(3...15)).map {
+                  "- #{Faker::Food.measurement} of #{Faker::Food.ingredient}"
+                }.join('\n')
+    directions Faker::Lorem.paragraph(3, true, 4)
+    cuisine
+    kind
   end
+
 end
