@@ -1,5 +1,6 @@
 class Cuisine < ApplicationRecord
   has_many :recipes
 
-  validates :name, presence: true
+  before_save { self.name = name.downcase }
+  validates :name, presence: true, uniqueness: true
 end

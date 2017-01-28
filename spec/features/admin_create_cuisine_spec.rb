@@ -13,7 +13,7 @@ feature 'Admin creates a new cuisine' do
 
     #expectation
     expect(page).to have_content 'Cozinha'
-    expect(page).to have_content cuisine.name
+    expect(page).to have_content cuisine.name.downcase
   end
 
   scenario 'and should fill all fields' do
@@ -24,4 +24,5 @@ feature 'Admin creates a new cuisine' do
     #expectation
     expect(page).to have_content 'Não foi possível criar a cozinha.'
   end
+
 end

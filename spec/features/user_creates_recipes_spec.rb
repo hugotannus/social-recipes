@@ -12,20 +12,8 @@ feature 'User sends a new recipe' do
                           portions: 6,
                           prep_time: 20,
                           difficulty: 'fácil',
-                          ingredients: '- 1 lata de leite condensado\n
-                          - 2 latas de leite (use a lata de leite  condensado como medida)\n
-                          - 4 ovos\n
-                          - 1/2 xícara de açúcar\n
-                          - 1/3 xícara de água',
-                          directions: '1. Prepare o pudim batendo todos os ingredientes no liquidificador\n
-                          2. Prepare a calda colocando água e açúcar em uma forma refratária com buraco no meio, de 24 cm de diâmetro\n
-                          3. Leve ao microondas na temperatura máxima por 8 minutos, até caramelizar o açúcar\n
-                          4. Retire a forma do microondas e girando-a entre as mãos, faça a calda cobrir as paredes da forma\n
-                          5. Deixe esfriar um pouco\n
-                          6. Coloque na forma a mistura do liquidificador e cubra parcialmente com filme plástico ou prato\n
-                          7. Leve ao microondas na temperatura máxima por 9 a 10 minutos\n
-                          8. Retire do microondas e deixe esfriar\n
-                          9. Leve à geladeira'
+                          ingredients: Faker::Food.ingredient,
+                          directions: Faker::Lorem.paragraph(2)
                         )
 
       #exercise
@@ -47,14 +35,16 @@ feature 'User sends a new recipe' do
       expect(page).to have_content recipe.cuisine.name
       expect(page).to have_content recipe.kind.name
       expect(page).to have_content recipe.difficulty
-      expect(page).to have_content `#{recipe.prep_time} minutos`
+      expect(page).to have_content "#{recipe.prep_time} minutos"
+      expect(page).to have_content recipe.ingredients
+      expect(page).to have_content recipe.directions
   end
 
-  # scenario 'and should fill all fields' do
-  #   visit new_recipe_path
-  #
-  #   click_on 'Criar Receita'
-  #
-  #   expect(page).to have_content 'Não foi possível criar a receita'
-  # end
+  scenario 'and should fill all fields' do
+    visit new_recipe_path
+
+    click_on 'Criar Receita'
+
+    expect(page).to have_content 'Não foi possível criar a receita.'
+  end
 end
