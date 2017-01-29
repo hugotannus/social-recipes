@@ -38,6 +38,27 @@ textarea {
   }
 }
 
+.flex-row {
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.media-object {
+  width:  9.6rem;
+  height: 9.6rem;
+}
+
+.media-body {
+  dt {
+    width: 10.5rem;
+  }
+  dd {
+    margin-left: 12.5rem;
+  }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {

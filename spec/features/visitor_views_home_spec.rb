@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor visits Emprego Ja home page' do
+feature 'Visitor visits home' do
   scenario 'successfully' do
     visit root_path
     expect(page).to have_content('Social Recipes')
@@ -14,7 +14,7 @@ feature 'Visitor visits Emprego Ja home page' do
     visit root_path
 
     5.times do |n|
-      expect(page).to have_css('.recipe_title', text: recipes[n].title)
+      expect(page).to have_css('.recipe-title', text: recipes[n].title)
     end
   end
 end

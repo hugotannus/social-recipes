@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'recipes#index'
 
   resources :cuisines,  only: [:index, :show, :new, :create]
   resources :kinds,     only: [:index, :show, :new, :create]
