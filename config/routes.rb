@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root 'recipes#index'
 
-  get   '/signup',  to: 'users#new'
-  get   '/login',   to: 'sessions#new'
-  post  '/login',   to: 'sessions#create'
+  get     '/signup',  to: 'users#new'
+  get     '/login',   to: 'sessions#new'
+  post    '/login',   to: 'sessions#create'
+  delete  '/logout',  to: 'sessions#destroy'
 
   resources :cuisines,  only: [:index, :show, :new, :create]
   resources :kinds,     only: [:index, :show, :new, :create]

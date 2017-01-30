@@ -16,6 +16,7 @@ feature 'User signs up' do
 
     click_on 'Criar conta'
 
+    expect(page).to have_content "Parabéns, #{john.name}! Você acaba de criar sua conta no Social Recipes."
     expect(page).to have_content john.name
     expect(page).to have_content john.email
   end

@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     # debugger
 
     if @user.save
+      log_in @user
+      flash[:success] = "Parabéns, #{@user.name}! Você acaba de criar sua conta no Social Recipes."
       redirect_to @user
     else
       flash.now[:danger] = 'Erro: não foi possível cadastrar usuário.'

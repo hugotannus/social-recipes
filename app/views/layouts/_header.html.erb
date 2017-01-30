@@ -3,9 +3,14 @@
     <%= link_to "Social Recipe", '#', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Inicio",   '#' %></li>
-        <li><%= link_to "Receitas", '#' %></li>
-        <li><%= link_to "Log in",   '#' %></li>
+        <li><%= link_to "Inicio",   root_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Minhas receitas", '#' %></li>
+          <li><%= link_to "Cadastrar receitas", new_recipe_path %></li>
+          <li><%= link_to "Sair", logout_path, method: 'delete' %></li>
+        <% else %>
+          <li><%= link_to "Entrar", login_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
