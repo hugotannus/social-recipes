@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) || current_user
   end
 
   def new
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
+      flash.now[:danger] = 'Erro: não foi possível cadastrar usuário.'
       render :new
     end
   end

@@ -12,11 +12,7 @@
     <%= render 'layouts/header' %>
     <main>
       <div class="container">
-        <% if flash[:notice] %>
-          <div class="alert alert-danger" role="alert">
-            <strong>Oops! </strong> <%= flash[:notice] %>
-          </div>
-        <% end %>
+        <%= render 'layouts/flash' %>
         <%= yield %>
       </div>
     </main>
