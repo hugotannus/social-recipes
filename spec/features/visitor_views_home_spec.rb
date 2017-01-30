@@ -9,7 +9,10 @@ feature 'Visitor visits home' do
   scenario 'and sees all the recipes' do
     #setup
     cuisine = create(:cuisine, name: 'condado')
-    recipes = create_list(:recipe, 5, cuisine: cuisine)
+    kind    = create(:kind)
+    recipes = create_list(:recipe, 5,
+                            cuisine: cuisine,
+                            kind: kind)
 
     visit root_path
 

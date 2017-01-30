@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'carrierwave_helper'
 
 feature 'User sends a new recipe' do
   scenario 'successfully' do
@@ -27,6 +28,7 @@ feature 'User sends a new recipe' do
       select  recipe.difficulty,  from: 'Dificuldade'
       fill_in 'Ingredientes',     with: recipe.ingredients
       fill_in 'Modo de preparo',  with: recipe.directions
+      attach_file 'Foto', "#{Rails.root}/spec/fixtures/images/sample.png"
 
       click_on 'Criar Receita'
 
@@ -38,6 +40,7 @@ feature 'User sends a new recipe' do
       expect(page).to have_content "#{recipe.prep_time} minutos"
       expect(page).to have_content recipe.ingredients
       expect(page).to have_content recipe.directions
+      expect(page).to have_xpath("//img[contains(@src,'#{File.basename(recipe.picture.url)}')]")
   end
 
   scenario 'and should fill all fields' do

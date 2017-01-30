@@ -11,6 +11,11 @@ FactoryGirl.define do
                   "- #{Faker::Food.measurement} of #{Faker::Food.ingredient}"
                 }.join('\n')
     directions Faker::Lorem.paragraph(3, true, 4)
+    picture Rack::Test::UploadedFile.new(
+              File.open(
+                File.join(Rails.root, '/spec/fixtures/images/sample.png')
+              )
+            )
     cuisine
     kind
   end
