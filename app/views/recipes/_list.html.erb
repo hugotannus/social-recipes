@@ -2,7 +2,11 @@
 <% @recipes.each do |recipe| %>
   <div class="media">
     <div class="media-left media-middle">
-      <img class="media-object" src="http://www.ilovealabamafood.com/wp-content/uploads/2011/12/dish-detail-bouillabaisse.png" alt="<%= recipe.title %>">
+      <% if !recipe.picture.thumb.file.nil? %>
+        <%= image_tag recipe.picture.thumb %>
+      <% else %>
+        <img class="media-object" src="http://ridgecrest-ca.gov/uploadedImages/Departments/Admin/noImageAvailable.jpg" alt="<%= recipe.title %>">
+      <% end %>
     </div>
     <div class="media-body">
       <h4 class="media-heading recipe-title">
