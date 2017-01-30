@@ -6,8 +6,19 @@
         <li><%= link_to "Inicio",   root_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Minhas receitas", '#' %></li>
-          <li><%= link_to "Cadastrar receitas", new_recipe_path %></li>
-          <li><%= link_to "Sair", logout_path, method: 'delete' %></li>
+          <li><%= link_to "Cadastrar receitas", new_recipe_url %></li>
+          <li class="dropdow">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              role="button" aria-haspopup="true" aria-expanded="false">
+              <%= fa_icon "caret-down", text: "#{current_user.name}", right: true %>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Minhas receitas", '#' %></li>
+              <li><%= link_to "Editar perfil", edit_user_url(current_user) %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Sair", logout_path, method: 'delete' %></li>
+            </ul>
+          </li>
         <% else %>
           <li><%= link_to "Entrar", login_path %></li>
         <% end %>

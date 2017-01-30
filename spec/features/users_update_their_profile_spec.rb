@@ -4,7 +4,10 @@ feature 'User updates his profile' do
   scenario 'successfully' do
     user = authenticate
 
-    visit edit_user_path user
+    within 'header' do
+      click_on user.name
+      click_on 'Editar perfil'
+    end
 
     fill_in 'Nome', with: 'John Doe Jr.'
     fill_in 'Senha', with: 'novasenha'
