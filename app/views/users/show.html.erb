@@ -1,14 +1,17 @@
-<% provide(:title, 'Seja bem-vindo') %>
+<% provide(:title, @user.name) %>
 
-<dl class="dl-horizontal">
-  <dt>Usuário</dt>
-  <dd><%= @user.name %></dd>
-  <dt>E-mail</dt>
-  <dd><%= @user.email %></dd>
-  <dt>Cidade</dt>
-  <dd><%= @user.city %></dd>
-  <dt>Twitter</dt>
-  <dd><%= @user.twitter %></dd>
-  <dt>Facebook</dt>
-  <dd><%= @user.facebook %></dd>
-</dl>
+<h1><%= "Perfil de #{@user.name}" %></h1>
+<%= link_to @user.email, @user.email %>
+<p><%= @user.city %></p>
+<p>
+  <%= link_to 'Facebook', @user.facebook %> |
+  <%= link_to 'Twitter',  @user.twitter  %>
+</p>
+
+<h2>Receitas de <%= @user.name %></h2>
+
+<div class="container-fluid">
+  <div class="flex-row">
+    <%= render @recipes %>
+  </div>
+</div>

@@ -18,6 +18,7 @@ FactoryGirl.define do
             )
     cuisine
     kind
+    user
   end
 
 end

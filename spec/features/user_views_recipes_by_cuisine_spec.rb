@@ -5,7 +5,8 @@ feature 'User views recipes by cuisine' do
     cuisine = create(:cuisine)
     recipe_a = create(:recipe, cuisine: cuisine)
     recipe_b = create(:recipe, cuisine: cuisine,
-                               kind: recipe_a.kind)
+                               kind: recipe_a.kind,
+                               user: recipe_a.user)
     visit root_path
 
     click_on cuisine.name
@@ -23,7 +24,8 @@ feature 'User views recipes by cuisine' do
                       title: 'Receita 1',
                       cuisine: cuisine_1)
     recipe_b = create(:recipe, cuisine: cuisine_2,
-                               kind: recipe_a.kind)
+                               kind: recipe_a.kind,
+                               user: recipe_a.user)
 
     visit root_path
     click_on cuisine_2.name

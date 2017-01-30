@@ -11,6 +11,8 @@ feature 'User sends a new recipe' do
                   File.join(Rails.root, '/spec/fixtures/images/sample.png')
                 )
               )
+                        
+    user    = authenticate
 
     recipe = Recipe.new( title: 'pudim',
                           cuisine: cuisine,
@@ -20,7 +22,8 @@ feature 'User sends a new recipe' do
                           difficulty: 'fácil',
                           ingredients: Faker::Food.ingredient,
                           directions: Faker::Lorem.paragraph(2),
-                          picture: image
+                          picture: image,
+                          user: user
                         )
 
       #exercise
@@ -55,5 +58,24 @@ feature 'User sends a new recipe' do
     click_on 'Criar Receita'
 
     expect(page).to have_content 'Não foi possível criar a receita.'
+  end
+
+  def authenticate
+    user = create(:user)
+
+    visit login_path
+
+    within 'main' do
+      click_on 'Entrar'
+    end
+
+    fill_in 'Usuário', with: user.email
+    fill_in 'Senha',   with: user.password
+
+    within 'main' do
+      click_on 'Entrar'
+    end
+
+    user
   end
 end

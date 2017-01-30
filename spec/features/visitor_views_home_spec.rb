@@ -10,6 +10,7 @@ feature 'Visitor visits home' do
     #setup
     cuisine = create(:cuisine, name: 'condado')
     kind    = create(:kind)
+    user    = create(:user)
     # image   = Rack::Test::UploadedFile.new(
     #             File.open(
     #               File.join(Rails.root, '/spec/fixtures/images/sample.png')
@@ -18,7 +19,7 @@ feature 'Visitor visits home' do
 
     21.times do |n|
       # travel_to (30 - n).minutes.ago do
-        create(:recipe,
+        user.recipes.create(
                 title: "Receita %02d" % [n+1],
                 cuisine: cuisine,
                 kind: kind)

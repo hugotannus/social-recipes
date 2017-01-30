@@ -1,0 +1,22 @@
+<div class="media">
+  <div class="media-left media-middle">
+    <% if !recipe.picture.thumb.file.nil? %>
+      <%= image_tag recipe.picture.thumb %>
+    <% else %>
+      <img class="media-object" src="http://ridgecrest-ca.gov/uploadedImages/Departments/Admin/noImageAvailable.jpg" alt="<%= recipe.title %>">
+    <% end %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading recipe-title">
+      <%= link_to recipe.title, recipe_path(recipe) %>
+    </h4>
+    <dl class="dl-horizontal">
+      <dt>Tipo de Receita</dt>
+      <dd><%= recipe.kind.name %></dd>
+      <dt>Cozinha</dt>
+      <dd><%= recipe.cuisine.name %></dd>
+      <dt>Dificuldade</dt>
+      <dd><%= recipe.difficulty %></dd>
+    </dl>
+  </div>
+</div>
