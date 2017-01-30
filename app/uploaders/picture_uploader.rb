@@ -9,13 +9,21 @@ class PictureUploader < CarrierWave::Uploader::Base
   # storage :fogend
 
   # Process files as they are uploaded:
-  process resize_to_fit: [800, 800]
+  # process resize_to_fit: [800, 800]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
+  version :profile do
+    process resize_to_fit: [360, 360]
+  end
+
+  version :small do
+    process resize_to_fit: [240, 240]
+  end
+
   version :thumb do
     process resize_to_fit: [96, 96]
   end
@@ -47,3 +55,12 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
 end
+
+# - deixe o imagemagick fermentando
+# - inclua mini-magick
+# - reduza o tamanho da imagem antes de continuar - 800 x 800
+# - crie um thumb da mesma imagem - 96 x 96
+# - crie um profile da mesma imagem - 360 x 360
+# - crie um small da mesma imagem - 240 x 240
+# - redefina o diretório para guardar imagens
+# - tente pegar a imagem profile, se existir, senão, tente a imagem normal

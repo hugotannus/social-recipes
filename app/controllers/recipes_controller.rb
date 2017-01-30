@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
     else
       @cuisines = Cuisine.all
       @kinds = Kind.all
-      flash[:notice] = 'Não foi possível criar a receita.'
+      flash.now[:notice] = 'Não foi possível criar a receita.'
       render :new
     end
   end
@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(
       :title, :portions, :prep_time, :difficulty, :ingredients, :directions,
-      :cuisine_id, :kind_id
+      :cuisine_id, :kind_id, :picture
     )
   end
 

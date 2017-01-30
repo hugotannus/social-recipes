@@ -1,5 +1,14 @@
 <% provide(:title, @recipe.title) %>
 <h1><%= @recipe.title %></h1>
+<% if @recipe.picture.profile.file.exists? %>
+  <%= image_tag @recipe.picture.profile %>
+<% elsif @recipe.picture? %>
+  <%= image_tag @recipe.picture.url %>
+<% end %>
+<!-- <%= image_tag @recipe.picture.url if @recipe.picture? %> -->
+<!-- <%= image_tag @recipe.picture.profile if @recipe.picture.profile.file.exists? %> -->
+<!-- <%= image_tag @recipe.picture.small if @recipe.picture.small.file.exists? %> -->
+<!-- <%= image_tag @recipe.picture.thumb if @recipe.picture.thumb.file.exists? %> -->
 <dl class="dl-horizontal">
   <dt>Cozinha</dt>
   <dd><%= @recipe.cuisine.name %></dd>

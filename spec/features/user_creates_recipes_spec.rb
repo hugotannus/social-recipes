@@ -6,6 +6,11 @@ feature 'User sends a new recipe' do
     #setup
     cuisine = Cuisine.create(name: 'brasileira')
     kind    = Kind.create(name: 'sobremesas')
+    image   = Rack::Test::UploadedFile.new(
+                File.open(
+                  File.join(Rails.root, '/spec/fixtures/images/sample.png')
+                )
+              )
 
     recipe = Recipe.new( title: 'pudim',
                           cuisine: cuisine,
@@ -14,7 +19,8 @@ feature 'User sends a new recipe' do
                           prep_time: 20,
                           difficulty: 'fácil',
                           ingredients: Faker::Food.ingredient,
-                          directions: Faker::Lorem.paragraph(2)
+                          directions: Faker::Lorem.paragraph(2),
+                          picture: image
                         )
 
       #exercise
