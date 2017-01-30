@@ -1,2 +1,18 @@
-<% provide(:title, `Cozinha #{@cuisine.name}`)%>
-<h2> Cozinha <%= @cuisine.name %> </h2>
+<% provide(:title, "Cozinha #{@cuisine.name}")%>
+<div class="row">
+  <div class="col-sm-2">
+    <%= render 'layouts/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <section id="site-content">
+      <div class="container-fluid">
+        <h1>Receitas</h1>
+        <h2>Cozinha <%= @cuisine.name %></h2>
+        <% if @recipes.empty? %>
+          <p><%= "Ainda não foi adicionada nenhuma receita para a cozinha #{@cuisine.name}." %></p>
+        <% end %>
+        <%= render 'recipes/list' %>
+      </div>
+    </section>
+  </div>
+</div>

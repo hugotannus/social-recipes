@@ -1,25 +1,13 @@
-<div class="container-fluid">
-  <h2>Receitas</h2>
-  <div class="flex-row">
-  <% @recipes.each do |recipe| %>
-    <div class="media">
-      <div class="media-left media-middle">
-        <img class="media-object" src="http://www.ilovealabamafood.com/wp-content/uploads/2011/12/dish-detail-bouillabaisse.png" alt="<%= recipe.title %>">
+<div class="row">
+  <div class="col-sm-2">
+    <%= render 'layouts/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <section id="site-content">
+      <div class="container-fluid">
+        <h2>Receitas</h2>
+        <%= render 'list' %>
       </div>
-      <div class="media-body">
-        <h4 class="media-heading recipe-title">
-          <%= link_to recipe.title, recipe_path(recipe) %>
-        </h4>
-        <dl class="dl-horizontal">
-          <dt>Tipo de Receita</dt>
-          <dd><%= recipe.kind.name %></dd>
-          <dt>Cozinha</dt>
-          <dd><%= recipe.cuisine.name %></dd>
-          <dt>Dificuldade</dt>
-          <dd><%= recipe.difficulty %></dd>
-        </dl>
-      </div>
-    </div>
-  <% end %>
+    </section>
   </div>
 </div>

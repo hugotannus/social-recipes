@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   LAST_RECIPES_AMOUNT = 20
 
   def index
+    @cuisines = Cuisine.all
     @recipes = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
   end
 
