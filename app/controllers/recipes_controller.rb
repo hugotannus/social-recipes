@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
+  LAST_RECIPES_AMOUNT = 20
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
   end
 
   def show

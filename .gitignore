@@ -22,3 +22,4 @@
 
 # Ignore upload directories
 /public/uploads/*
+/spec/support/uploads/*
