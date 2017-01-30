@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :cuisines,  only: [:index, :show, :new, :create]
   resources :kinds,     only: [:index, :show, :new, :create]
   resources :recipes,   only: [:index, :show, :new, :create]
-  resources :users,     only: [:index, :show, :new, :create]
+  resources :users,     only: [:index, :show, :new, :create, :edit, :update]
   resources :sessions,  only: [:new, :create]
 end

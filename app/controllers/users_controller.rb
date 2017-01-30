@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user,  only: [:edit, :update]
+  before_action :correct_user,    only: [:edit, :update]
 
   def show
-    @user = User.find(params[:id]) || current_user
+    @user = User.find(params[:id])
   end
 
   def new
@@ -22,11 +24,42 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      flash[:success] = "Perfil atualizado com sucesso!"
+      redirect_to @user
+    else
+      flash.now[:danger] = 'Erro: não foi possível atualizar dados.'
+      render :edit
+    end
+  end
+
   private
 
-  def user_params
-    params.require(:user).permit(
-      :name, :email, :password, :password_confirmation
-    )
-  end
+    def user_params
+      params.require(:user).permit(
+        :name, :email, :password, :password_confirmation
+      )
+    end
+
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = 'Oops! Parece que você não está logado...'
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      unless current_user? @user
+        flash[:danger] = 'O que você pensa que está fazendo??? VAZA, maluco!!!'
+        redirect_to root_url
+      end
+    end
 end
