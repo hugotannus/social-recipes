@@ -4,6 +4,7 @@ feature 'User makes authentication' do
   scenario 'successfully' do
     john = User.create(name: 'John Doe',
                     email: 'john.doe@example.com',
+                    city: 'São Paulo',
                     password: 'foopswd',
                     password_confirmation: 'foopswd')
 
@@ -26,6 +27,7 @@ feature 'User makes authentication' do
   scenario 'and should return to home' do
     john = User.create(name: 'John Doe',
                     email: 'john.doe@example.com',
+                    city: 'São Paulo',
                     password: 'foopswd',
                     password_confirmation: 'foopswd')
 

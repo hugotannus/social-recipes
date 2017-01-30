@@ -118,17 +118,17 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email][0]).to include("is invalid")
   end
 
-  it 'facebook link shoud have a valid format' do
-    user = User.create( name: 'John Doe',
-                        email: 'john.doe@example.com',
-                        city: 'São Paulo',
-                        password: 'foopswd',
-                        password_confirmation: 'foopswd',
-                        facebook: 'my_pageid')
-
-    expect(user).not_to be_valid
-    expect(user.errors[:facebook][0]).to include("is invalid")
-  end
+  # it 'facebook link shoud have a valid format' do
+  #   user = User.create( name: 'John Doe',
+  #                       email: 'john.doe@example.com',
+  #                       city: 'São Paulo',
+  #                       password: 'foopswd',
+  #                       password_confirmation: 'foopswd',
+  #                       facebook: 'my_pageid')
+  #
+  #   expect(user).not_to be_valid
+  #   expect(user.errors[:facebook][0]).to include("is invalid")
+  # end
 
   # it 'twitter link shoud have a valid format' do
   #   user = User.create(name: 'John Doe',
