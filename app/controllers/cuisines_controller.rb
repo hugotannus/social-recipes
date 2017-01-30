@@ -3,7 +3,9 @@ class CuisinesController < ApplicationController
   def show
     @cuisine = Cuisine.find(params[:id])
     @recipes = @cuisine.recipes
+
     @cuisines = Cuisine.all
+    @kinds = Kind.all
   end
 
   def new

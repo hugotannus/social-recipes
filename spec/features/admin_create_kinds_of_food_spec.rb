@@ -12,8 +12,9 @@ feature 'Admin creates a new kind of food' do
     click_on 'Criar Tipo de Receita'
 
     #expectation
-    expect(page).to have_content 'Tipo de Receita'
-    expect(page).to have_content kind.name.downcase
+    within '#site-content' do
+      expect(page).to have_content kind.name.downcase
+    end
   end
 
   scenario 'and should fill all fields' do

@@ -1,3 +1,18 @@
 <% provide(:title, @kind.name) %>
-<h2> Novo Tipo de Receita adicionado! </h2>
-<p><%= @kind.name %></p>
+<div class="row">
+  <div class="col-sm-2">
+    <%= render 'layouts/sidebar' %>
+  </div>
+  <div class="col-sm-10">
+    <section id="site-content">
+      <div class="container-fluid">
+        <h1>Receitas</h1>
+        <h2><%= @kind.name %></h2>
+        <% if @recipes.empty? %>
+          <p><%= "Ainda não foi adicionada nenhuma receita de #{@kind.name}." %></p>
+        <% end %>
+        <%= render 'recipes/list' %>
+      </div>
+    </section>
+  </div>
+</div>

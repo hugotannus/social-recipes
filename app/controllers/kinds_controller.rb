@@ -2,6 +2,10 @@ class KindsController < ApplicationController
 
   def show
     @kind = Kind.find(params[:id])
+    @recipes = @kind.recipes
+
+    @kinds = Kind.all
+    @cuisines = Cuisine.all
   end
 
   def new

@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :kind do
-    name "fast plates"
+    name "pratos rápidos"
   end
 end

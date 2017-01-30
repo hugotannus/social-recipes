@@ -17,7 +17,7 @@ feature 'User views recipes by cuisine' do
 
   scenario 'and view only the recipes from current cuisine' do
     cuisine_1 = create(:cuisine)
-    cuisine_2 = create(:cuisine, name: 'principal')
+    cuisine_2 = create(:cuisine, name: 'italiana')
 
     recipe_a = create(:recipe,
                       title: 'Receita 1',
