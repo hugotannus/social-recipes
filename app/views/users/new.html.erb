@@ -1,0 +1,31 @@
+<% provide(:title, 'Cadastre-se') %>
+<h1>Cadastre-se</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :name, 'Nome' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, 'E-mail' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, 'Senha' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmar senha" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <div class="actions form-group">
+        <%= f.button class:'btn btn-success' do %>
+          <%= fa_icon 'plus lg', text: 'Criar conta' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

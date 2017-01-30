@@ -14,7 +14,7 @@ feature 'User signs up' do
     fill_in 'Senha',            with: john.password
     fill_in 'Confirmar senha',  with: john.password_confirmation
 
-    click_on 'Cadastrar-se'
+    click_on 'Criar conta'
 
     expect(page).to have_content john.name
     expect(page).to have_content john.email
