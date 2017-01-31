@@ -14,7 +14,7 @@ feature 'User sends a new recipe' do
 
     user    = authenticate
 
-    recipe = Recipe.new( title: 'pudim',
+    recipe = user.recipes.build( title: 'pudim',
                           cuisine: cuisine,
                           kind: kind,
                           portions: 6,
@@ -22,8 +22,7 @@ feature 'User sends a new recipe' do
                           difficulty: 'fácil',
                           ingredients: Faker::Food.ingredient,
                           directions: Faker::Lorem.paragraph(2),
-                          picture: image,
-                          user: user
+                          picture: image
                         )
 
       #exercise
@@ -53,6 +52,8 @@ feature 'User sends a new recipe' do
   end
 
   scenario 'and should fill all fields' do
+    user = authenticate
+
     visit new_recipe_path
 
     click_on 'Criar Receita'
