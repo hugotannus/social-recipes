@@ -55,12 +55,12 @@ class UsersController < ApplicationController
       )
     end
 
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = 'Oops! Parece que você não está logado...'
-        redirect_to login_url
-      end
-    end
+    # def logged_in_user
+    #   unless logged_in?
+    #     flash[:danger] = 'Oops! Parece que você não está logado...'
+    #     redirect_to login_url
+    #   end
+    # end
 
     def correct_user
       @user = User.find(params[:id])

@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.build if logged_in?
     @cuisines = Cuisine.all
     @kinds = Kind.all
 

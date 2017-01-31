@@ -6,4 +6,13 @@ class ApplicationController < ActionController::Base
   def show
     @kinds = Kind.all
   end
+
+  private
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = 'Oops! Parece que você não está logado...'
+      redirect_to login_url
+    end
+  end
 end
