@@ -5,10 +5,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
+
+    @kinds = Kind.all
+    @cuisines = Cuisine.all
   end
 
   def new
     @user = User.new
+    render layout: 'main'
   end
 
   def create
@@ -27,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    render layout: 'main'
   end
 
   def update

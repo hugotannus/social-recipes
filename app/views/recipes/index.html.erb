@@ -1,13 +1,10 @@
-<div class="row">
-  <div class="col-sm-2">
-    <%= render 'layouts/sidebar' %>
+<% content_for :sidebar do %>
+  <%= render 'shared/sidebar' %>
+<% end %>
+
+<section id="site-content">
+  <div class="container-fluid">
+    <h2>Receitas</h2>
+    <%= render 'list' %>
   </div>
-  <div class="col-sm-10">
-    <section id="site-content">
-      <div class="container-fluid">
-        <h2>Receitas</h2>
-        <%= render 'list' %>
-      </div>
-    </section>
-  </div>
-</div>
+</section>

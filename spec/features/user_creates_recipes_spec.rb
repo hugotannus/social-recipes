@@ -11,7 +11,7 @@ feature 'User sends a new recipe' do
                   File.join(Rails.root, '/spec/fixtures/images/sample.png')
                 )
               )
-                        
+
     user    = authenticate
 
     recipe = Recipe.new( title: 'pudim',
@@ -42,7 +42,7 @@ feature 'User sends a new recipe' do
       click_on 'Criar Receita'
 
       #expectations
-      expect(page).to have_css('h1', text: recipe.title)
+      expect(page).to have_css('h2', text: recipe.title)
       expect(page).to have_content recipe.cuisine.name
       expect(page).to have_content recipe.kind.name
       expect(page).to have_content recipe.difficulty

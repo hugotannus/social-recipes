@@ -1,6 +1,10 @@
 <% provide(:title, @user.name) %>
 
-<h1><%= "Perfil de #{@user.name}" %></h1>
+<% content_for :sidebar do %>
+  <%= render 'shared/sidebar' %>
+<% end %>
+
+<h2><%= "Perfil de #{@user.name}" %></h2>
 <%= link_to @user.email, @user.email %>
 <p><%= @user.city %></p>
 <p>
@@ -8,7 +12,7 @@
   <%= link_to 'Twitter',  @user.twitter  %>
 </p>
 
-<h2>Receitas de <%= @user.name %></h2>
+<h3>Receitas de <%= @user.name %></h3>
 
 <div class="container-fluid">
   <div class="flex-row">

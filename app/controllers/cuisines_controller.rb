@@ -10,6 +10,7 @@ class CuisinesController < ApplicationController
 
   def new
     @cuisine = Cuisine.new
+    render layout: 'main'
   end
 
   def create

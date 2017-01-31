@@ -10,6 +10,7 @@ class KindsController < ApplicationController
 
   def new
     @kind = Kind.new
+    render layout: 'main'
   end
 
   def create

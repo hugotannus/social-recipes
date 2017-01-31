@@ -9,12 +9,17 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+
+    @kinds = Kind.all
+    @cuisines = Cuisine.all
   end
 
   def new
     @recipe = Recipe.new
     @cuisines = Cuisine.all
     @kinds = Kind.all
+
+    render layout: 'main'
   end
 
   def create
