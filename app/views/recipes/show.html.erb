@@ -4,47 +4,50 @@
   <%= render 'shared/sidebar' %>
 <% end %>
 
-<h2>
-  <%= @recipe.title %>
-  <p> Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %></p>
-</h2>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-5">
-      <dl class="dl-horizontal">
-        <dt>Tipo</dt>
-        <dd><%= @recipe.kind.name %></dd>
-        <dt>Cozinha</dt>
-        <dd><%= @recipe.cuisine.name %></dd>
-        <dt>Serve</dt>
-        <dd><%= @recipe.portions %> pessoas</dd>
-        <dt>Tempo de preparo</dt>
-        <dd><%= @recipe.prep_time %> minutos</dd>
-        <dt>Dificuldade</dt>
-        <dd><%= @recipe.difficulty %></dd>
-      </dl>
+<section id="recipe">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5">
+        <h2>
+          <%= @recipe.title %>
+          <p> Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %></p>
+        </h2>
+        <dl class="dl-horizontal">
+          <dt>Tipo</dt>
+          <dd><%= @recipe.kind.name %></dd>
+          <dt>Cozinha</dt>
+          <dd><%= @recipe.cuisine.name %></dd>
+          <dt>Serve</dt>
+          <dd><%= @recipe.portions %> pessoas</dd>
+          <dt>Tempo de preparo</dt>
+          <dd><%= @recipe.prep_time %> minutos</dd>
+          <dt>Dificuldade</dt>
+          <dd><%= @recipe.difficulty %></dd>
+        </dl>
+      </div>
+      <div class="col-md-7">
+        <div id="ilustration">
+          <% if @recipe.picture.ilustration.file.exists? %>
+            <%= image_tag @recipe.picture.ilustration %>
+          <% elsif @recipe.picture.small.file.exists? %>
+            <%= image_tag @recipe.picture.small %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-7">
-      <% if @recipe.picture.profile.file.exists? %>
-        <%= image_tag @recipe.picture.profile %>
-      <% elsif @recipe.picture? %>
-        <%= image_tag @recipe.picture.url %>
-      <% end %>
+    <div class="row">
+      <div class="col-md-5">
+        <h2>Ingredientes</h2>
+        <pre>
+          <%= @recipe.ingredients %>
+        </pre>
+      </div>
+      <div class="col-md-7">
+        <h2>Modo de preparo</h2>
+        <pre>
+          <%= @recipe.directions %>
+        </pre>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-5">
-      <h2>Ingredientes</h2>
-      <pre>
-        <%= @recipe.ingredients %>
-      </pre>
-    </div>
-    <div class="col-sm-7">
-      <h2>Modo de preparo</h2>
-      <pre>
-        <%= @recipe.directions %>
-      </pre>
-    </div>
-  </div>
-</div>
+</section>

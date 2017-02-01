@@ -45,20 +45,6 @@ textarea {
   flex-wrap: wrap;
 }
 
-.media-object {
-  width:  9.6rem;
-  height: 9.6rem;
-}
-
-.media-body {
-  dt {
-    width: 10.5rem;
-  }
-  dd {
-    margin-left: 12.5rem;
-  }
-}
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,18 +61,62 @@ h1 {
 h2 {
   font-size: 2.2em;
   letter-spacing: -0.1rem;
-  margin-bottom: 3.0rem;
+  margin-bottom: 2.0rem;
+  margin-top: 1.3rem;
   // text-align: center;
   font-weight: normal;
   color: $light-grey;
+  line-height: 4.5rem;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   line-height: 1.7rem;
 }
 
+/* main */
+
+.media-object {
+  width:  9.6rem;
+  height: 9.6rem;
+}
+
+.media-body {
+  dt {
+    width: 10.5rem;
+  }
+  dd {
+    margin-left: 12.5rem;
+  }
+}
+
+#recipe {
+  dl {
+    font-size: 1.6rem;
+    // margin-left: -15px;
+    // margin-top: 20px;
+    dt {
+      width: 14.5rem;
+      text-align: left;
+      line-height: 3rem;
+      font-weight: 600;
+    }
+    dd {
+      margin-left: 15.5rem;
+      line-height: 3rem;
+    }
+  }
+}
+
+#ilustration {
+  margin-top: 3rem;
+}
+
 /* header */
+
+header {
+  background-color: #e8ebee;
+}
 
 #logo {
   float: left;
