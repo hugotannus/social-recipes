@@ -1,13 +1,13 @@
 <aside class="sidebar">
   <section id="kind-list">
     <h3>Tipo</h3>
-    <% @kinds.each do |kind| %>
+    <% Kind.all.each do |kind| %>
       <p><%= link_to kind.name, kind %></p>
     <% end %>
   </section>
   <section id="cuisine-list">
     <h3>Cozinha</h3>
-    <% @cuisines.each do |cuisine| %>
+    <% Cuisine.all.each do |cuisine| %>
       <p><%= link_to cuisine.name, cuisine %></p>
     <% end %>
   </section>

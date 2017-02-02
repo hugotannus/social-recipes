@@ -5,9 +5,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes
-
-    @kinds = Kind.all
-    @cuisines = Cuisine.all
   end
 
   def new
@@ -44,6 +41,10 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'Erro: não foi possível atualizar dados.'
       render :edit
     end
+  end
+
+  def recipes
+    @user = current_user
   end
 
   private

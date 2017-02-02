@@ -59,6 +59,13 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    flash[:info] = "Receita '#{@recipe.title}' apagada com sucesso!"
+    @recipe.destroy
+    redirect_to recipes_path
+  end
+
   private
 
   def recipe_params
@@ -66,6 +73,14 @@ class RecipesController < ApplicationController
       :title, :portions, :prep_time, :difficulty, :ingredients, :directions,
       :cuisine_id, :kind_id, :picture, :user_id
     )
+  end
+
+  def correct_user
+    @user = Recipe.find(params[:id]).user
+    unless current_user? @user
+      flash[:danger] = 'O que você pensa que está fazendo??? VAZA, maluco!!!'
+      redirect_to root_url
+    end
   end
 
 end

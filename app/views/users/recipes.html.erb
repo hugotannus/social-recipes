@@ -1,0 +1,13 @@
+<% provide(:title, @user.name) %>
+
+<% content_for :sidebar do %>
+  <%= render 'shared/sidebar' %>
+<% end %>
+
+<h2>Minhas receitas</h2>
+
+<div class="container-fluid">
+  <div class="flex-row">
+    <%= render current_user.recipes %>
+  </div>
+</div>

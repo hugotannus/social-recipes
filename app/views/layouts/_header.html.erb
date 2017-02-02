@@ -5,7 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Inicio", recipes_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Minhas receitas", '#' %></li>
+          <li><%= link_to "Minhas receitas", my_recipes_url %></li>
           <li><%= link_to "Cadastrar receitas", new_recipe_url %></li>
           <li class="dropdow">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
