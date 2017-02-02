@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   delete  '/logout',      to: 'sessions#destroy'
   get     '/my_recipes',  to: 'users#recipes'
 
-  resources :recipes
   resources :cuisines,  only: [:index, :show, :new, :create]
   resources :kinds,     only: [:index, :show, :new, :create]
-  resources :users,     only: [:index, :show, :new, :edit, :create, :update]
+  resources :recipes do
+    get 'search', on: :collection
+  end
   resources :sessions,  only: [:new, :create]
+  resources :users,     only: [:index, :show, :new, :edit, :create, :update] do
+    get 'recipes', on: :collection
+  end
 end

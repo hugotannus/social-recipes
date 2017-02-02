@@ -5,8 +5,8 @@ class RecipesController < ApplicationController
   LAST_RECIPES_AMOUNT = 20
 
   def index
-    @cuisines = Cuisine.all
-    @kinds = Kind.all
+    # @cuisines = Cuisine.all
+    # @kinds = Kind.all
     @recipes = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
   end
 
@@ -29,6 +29,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @cuisines = Cuisine.all
     @kinds = Kind.all
+  end
+
+  def search
+    @recipes = Recipe.all.select { |recipe| recipe.include? params[:term] }
+    flash[:info]  = (@recipes.size > 0) ?
+      "Econtrado(s) #{@recipes.size} resultado(s) para #{params[:term]}." :
+      "Não foi econtrado nenhum resultado para soup."
+    render :index
   end
 
   def create

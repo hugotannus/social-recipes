@@ -5,4 +5,8 @@ class Recipe < ApplicationRecord
 
   enum difficulty: ['fácil', 'moderada', 'difícil']
   mount_uploader :picture, PictureUploader
+
+  def include?(term)
+    title.downcase.include?(term.downcase)
+  end
 end

@@ -1,7 +1,12 @@
 <header class="navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to "Social Recipe", '#', id: "logo" %>
     <nav>
+      <%= link_to "Social Recipe", '#', id: "logo" %>
+      <%= form_tag search_recipes_path, method: :get, class:'navbar-form' do %>
+        <%= label_tag :term, 'Procurar por', id: "search-label" %>
+        <%= text_field_tag :term, params[:term], class:'form-control' %>
+        <%= submit_tag 'buscar', class:'btn' %>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Inicio", recipes_path %></li>
         <% if logged_in? %>
