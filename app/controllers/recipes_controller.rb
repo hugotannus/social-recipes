@@ -25,6 +25,12 @@ class RecipesController < ApplicationController
     render layout: 'main'
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    @cuisines = Cuisine.all
+    @kinds = Kind.all
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
@@ -36,6 +42,20 @@ class RecipesController < ApplicationController
       @kinds = Kind.all
       flash.now[:notice] = 'Não foi possível criar a receita.'
       render :new
+    end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      flash[:success] = 'Receita atualizada com sucesso!'
+      redirect_to @recipe
+    else
+      @cuisines = Cuisine.all
+      @kinds = Kind.all
+      flash.now[:notice] = 'Não foi possível atualizar a receita.'
+      render :edit
     end
   end
 

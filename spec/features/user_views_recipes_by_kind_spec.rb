@@ -7,7 +7,7 @@ feature 'User views recipes by kind' do
     recipe_b = create(:recipe, kind: kind,
                                cuisine: recipe_a.cuisine,
                                user: recipe_a.user)
-    visit root_path
+    visit recipes_path
 
     click_on kind.name
 
@@ -27,7 +27,7 @@ feature 'User views recipes by kind' do
                                cuisine: recipe_a.cuisine,
                                user: recipe_a.user)
 
-    visit root_path
+    visit recipes_path
     click_on kind_2.name
 
     within('#site-content') do
@@ -42,7 +42,7 @@ feature 'User views recipes by kind' do
   scenario 'view a friendly empty message' do
     kind = Kind.create(name: 'sobremesa')
 
-    visit root_path
+    visit recipes_path
     click_on kind.name
 
     expect(page).to have_content "Ainda não foi adicionada nenhuma receita de #{kind.name}."

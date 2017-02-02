@@ -9,10 +9,9 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :city, :password, :password_confirmation, presence: true
   validates :email, presence: true, uniqueness: true,
                     length: { minimum: 8, maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
-  # validates :facebook, format: { with: VALID_FB_REGEX }
-  validates :city, :password, :password_confirmation, presence: true
 
 end

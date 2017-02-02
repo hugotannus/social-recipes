@@ -10,7 +10,19 @@
       <div class="col-md-5">
         <h2>
           <%= @recipe.title %>
-          <p> Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %></p>
+          <p>
+            <% if @recipe.user == current_user %>
+              <%= link_to edit_recipe_url @recipe do %>
+                <%= fa_icon 'edit', text: "editar", right: true  %>
+              <% end %>
+              &nbsp;|&nbsp;
+              <%= link_to '#' do %>
+                <%= fa_icon 'trash-o', text: "apagar", right: true  %>
+              <% end %>
+            <% else %>
+              Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %>
+            <% end %>
+          </p>
         </h2>
         <dl class="dl-horizontal">
           <dt>Tipo</dt>
@@ -18,9 +30,11 @@
           <dt>Cozinha</dt>
           <dd><%= @recipe.cuisine.name %></dd>
           <dt>Serve</dt>
-          <dd><%= @recipe.portions %> pessoas</dd>
+          <dd id='portions-value'>
+            <%= @recipe.portions %> pessoas</dd>
           <dt>Tempo de preparo</dt>
-          <dd><%= @recipe.prep_time %> minutos</dd>
+          <dd id='preptime-value'>
+            <%= @recipe.prep_time %> minutos</dd>
           <dt>Dificuldade</dt>
           <dd><%= @recipe.difficulty %></dd>
         </dl>
