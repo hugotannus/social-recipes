@@ -280,6 +280,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    redcarpet (3.4.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -360,6 +361,7 @@ DEPENDENCIES
   mini_magick
   puma (~> 3.0)
   rails (~> 5.0.1)
+  redcarpet
   rspec-rails
   sass-rails (~> 5.0)
   spring
@@ -371,4 +373,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.6
+   1.14.3
