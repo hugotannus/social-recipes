@@ -32,10 +32,10 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.all.select { |recipe| recipe.include? params[:term] }
+    @recipes = Recipe.all.select { |recipe| recipe.include? params[:search] }
     flash[:info]  = (@recipes.size > 0) ?
-      "Econtrado(s) #{@recipes.size} resultado(s) para #{params[:term]}." :
-      "Não foi econtrado nenhum resultado para soup."
+      "Econtrado(s) #{@recipes.size} resultado(s) para #{params[:search]}." :
+      "Não foi econtrado nenhum resultado para #{params[:search]}."
     render :index
   end
 

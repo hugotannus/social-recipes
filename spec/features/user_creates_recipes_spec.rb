@@ -33,7 +33,7 @@ feature 'User sends a new recipe' do
       select  kind.name,          from: 'Tipo de receita'
       fill_in 'Rendimento',       with: recipe.portions
       fill_in 'Tempo de preparo', with: recipe.prep_time
-      select  recipe.difficulty,  from: 'Dificuldade'
+      page.choose(recipe.difficulty)
       fill_in 'Ingredientes',     with: recipe.ingredients
       fill_in 'Modo de preparo',  with: recipe.directions
       attach_file 'Foto', "#{Rails.root}/spec/fixtures/images/sample.png"

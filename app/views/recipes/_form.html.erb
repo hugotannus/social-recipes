@@ -4,11 +4,17 @@
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
+    <%= label_tag 'Dificuldade'%>
+    <% Recipe.difficulties.each do |d| %>
+      <%= f.label :difficulty, class:'checkbox-inline' do %>
+        <%= f.radio_button :difficulty, d.first %> <%= d.first %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
     <%= f.label :picture, 'Foto' %>
     <div class="input-group">
-      <span class="input-group-addon">
-        <%= fa_icon 'image lg' %>
-      </span>
+      <span class="input-group-addon"><%= fa_icon 'image lg' %></span>
       <%= f.file_field :picture, class: 'form-control' %>
       <span class="input-group-addon">.jpg .jpeg .gif ou .png</span>
     </div>
@@ -16,11 +22,12 @@
   <div class="form-group">
     <%= f.label :cuisine_id, 'Cozinha' %>
     <%= f.collection_select :cuisine_id,
-        @cuisines, :id, :name, class: 'form-control' %>
+        @cuisines, :id, :name, {}, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :kind_id, 'Tipo de receita' %>
-    <%= f.collection_select :kind_id, @kinds, :id, :name, class: 'form-control' %>
+    <%= f.collection_select :kind_id, @kinds, :id, :name,
+        {}, {class: 'form-control'} %>
   </div>
   <div class="form-group">
     <%= f.label :portions, 'Rendimento' %>
@@ -32,14 +39,6 @@
       <%= f.number_field :prep_time, class: 'form-control' %>
       <span class="input-group-addon">minutos</span>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :difficulty, 'Dificuldade'%>
-    <%= f.select :difficulty  do %>
-      <% Recipe.difficulties.each do |d| %>
-        <%= content_tag(:option, d.first, value: d.first) %>
-      <% end %>
-    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :ingredients, 'Ingredientes' %>

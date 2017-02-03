@@ -8,7 +8,7 @@ feature 'Visitor searches for recipes' do
     #exercise
     visit root_path
 
-    fill_in 'Procurar por', with: 'sopa de letrinhas'
+    fill_in 'search', with: 'sopa de letrinhas'
     click_on 'buscar'
 
     #expectations
@@ -33,7 +33,7 @@ feature 'Visitor searches for recipes' do
     #exercise
     visit root_path
 
-    fill_in 'Procurar por', with: 'sopa'
+    fill_in 'search', with: 'sopa'
     click_on 'buscar'
 
     #expectations
@@ -61,7 +61,7 @@ feature 'Visitor searches for recipes' do
     #exercise
     visit root_path
 
-    fill_in 'Procurar por', with: 'soup'
+    fill_in 'search', with: 'soup'
     click_on 'buscar'
 
     #expectations
