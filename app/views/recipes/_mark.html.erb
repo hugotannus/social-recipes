@@ -1,0 +1,6 @@
+<%= form_for current_user.favorited_recipes.build do |f| %>
+  <div><%= hidden_field_tag :favorite_id, @recipe.id %></div>
+  <%= f.button :favorite_id, id: 'fav_button', class: "toggle-star" do %>
+    <%= fa_icon 'star', text:'receita favorita' %>
+  <% end %>
+<% end %>

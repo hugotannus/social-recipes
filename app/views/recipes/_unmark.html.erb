@@ -1,0 +1,6 @@
+<%= form_for(current_user.favorited_recipes.find_by(favorite_id: @recipe.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.button :favorite_id, id: 'fav_button', class: "toggle-star active" do %>
+    <%= fa_icon 'star', text:'receita favorita' %>
+  <% end %>
+<% end %>

@@ -9,7 +9,7 @@ feature 'User removes recipe' do
     #exercise
     visit recipe_path(recipe)
 
-    click_on 'remover'
+    click_on 'apagar'
 
     #expectation
     expect(page).to have_content "Receita '#{recipe.title}' apagada com sucesso!"

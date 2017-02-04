@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :users,     only: [:index, :show, :new, :edit, :create, :update] do
     get 'recipes', on: :collection
   end
+  resources :favorited_recipes, only: [:create, :destroy]
 end
