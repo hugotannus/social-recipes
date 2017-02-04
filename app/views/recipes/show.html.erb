@@ -13,17 +13,21 @@
           <p>
             <% if @recipe.user == current_user %>
               <%= link_to edit_recipe_url @recipe do %>
-                <%= fa_icon 'edit', text: "editar", right: true  %>
-              <% end %>
-              &nbsp;|&nbsp;
+                <%= fa_icon 'edit', text: "editar", right: true %>
+              <% end %>&nbsp;|&nbsp;
               <%= link_to @recipe, method: 'delete',
                   data: {confirm: 'Tem certeza de que deseja excluir essa receita?'} do %>
                 <%= fa_icon 'trash-o', text: "apagar", right: true  %>
               <% end %>
-              &nbsp;|&nbsp;
-              <%= link_to 'remover', @recipe, method: 'delete' %>
             <% else %>
               Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %>
+              <%= check_box_tag :favorite %>
+              <%= label_tag :favorite do %>
+                <%= fa_icon 'star' %>
+              <% end %>
+              <%= button_tag :favorito, class:'btn toggle-star', :'data-toggle' => 'button' do %>
+                <%= fa_icon 'star' %>
+              <% end %>
             <% end %>
           </p>
         </h2>

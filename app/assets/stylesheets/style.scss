@@ -8,6 +8,8 @@ $light-grey: #777;
 $lighter-grey: #888;
 $dark-grey: #555;
 $l3-blue: #e8ebee;
+$uncheck-color: #aab8c2;
+$favorite-color: gold;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -70,8 +72,16 @@ h2 {
   line-height: 4.5rem;
 }
 
-p {
+body {
+  font-size: 1.5rem;
+}
+
+a {
   font-size: 1.6rem;
+}
+
+p {
+  font-size: 1.5rem;
   line-height: 1.7rem;
 }
 
@@ -162,6 +172,46 @@ footer {
 }
 
 /* miscellaneous */
+
+.toggle-star {
+  border: none;
+  color: $uncheck-color;
+  background-color: transparent;
+  outline: none;
+  margin: 0;
+  padding: 2px 6px 3px 6px;
+  font-size: initial;
+  line-height: inherit;
+  .active, :active{
+    outline: none;
+    color: $favorite-color;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  // &:active + &.active {
+  //   color: $favorite-color;
+  // }
+  :hover, :focus, .focus{
+    color: $favorite-color;
+  }
+}
+
+#favorite {
+  position: absolute;
+  left: -100vw;
+  &:checked + label {
+      color: $favorite-color;
+  }
+  &:hover {
+
+  }
+}
+
+[for='favorite'] {
+    margin-left: 0.5rem;
+    color: #aab8c2;
+    cursor: pointer;
+}
 
 .debug_dump {
   clear: both;
