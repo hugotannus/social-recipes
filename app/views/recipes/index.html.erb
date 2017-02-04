@@ -4,7 +4,19 @@
 
 <section id="site-content">
   <div class="container-fluid">
-    <h2>Receitas</h2>
-    <%= render 'list' %>
+    <div class="row">
+      <div class="col-sm-6">
+        <section id="ultimas-receitas">
+          <h2>Últimas Receitas</h2>
+          <%= render 'list' %>
+        </section>
+      </div>
+      <div class="col-sm-6">
+        <section id="receitas-favoritas">
+          <h2>Favoritas dos Usuários</h2>
+          <%= render 'favorited_recipes/list' %>
+        </section>
+      </div>
+    </div>
   </div>
 </section>
