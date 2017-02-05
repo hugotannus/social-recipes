@@ -3,11 +3,13 @@ class RecipesController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   LAST_RECIPES_AMOUNT = 20
+  MOST_FAVORITES_AMOUNT = 5
 
   def index
-    # @cuisines = Cuisine.all
-    # @kinds = Kind.all
-    @recipes = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
+    @recipes    = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
+    @favorites  = Recipe.all.sort_by {
+                    |recipe| recipe.followers.count
+                  }.reverse.take(MOST_FAVORITES_AMOUNT)
   end
 
   def show
