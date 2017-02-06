@@ -7,72 +7,63 @@ feature 'Visitor visits home' do
   end
 
   scenario 'and sees just last 20 recipes' do
-    #setup
+    # setup
     cuisine = create(:cuisine, name: 'condado')
     kind    = create(:kind)
     user    = create(:user)
-    # image   = Rack::Test::UploadedFile.new(
-    #             File.open(
-    #               File.join(Rails.root, '/spec/fixtures/images/sample.png')
-    #             )
-    #           )
 
     21.times do |n|
-      # travel_to (30 - n).minutes.ago do
-        user.recipes.create(
-                title: "Receita %02d" % [n+1],
-                cuisine: cuisine,
-                kind: kind)
-      # end
+      user.recipes.create(title: 'Receita %02d' % [n + 1],
+                          cuisine: cuisine,
+                          kind: kind)
     end
 
     visit recipes_path
 
     within ('#ultimas-receitas') do
-      expect(page).to have_css('.recipe-title', text: "Receita 21")
-      expect(page).to have_css('.recipe-title', text: "Receita 20")
-      expect(page).to have_css('.recipe-title', text: "Receita 19")
-      expect(page).to have_css('.recipe-title', text: "Receita 10")
-      expect(page).to have_css('.recipe-title', text: "Receita 02")
-      expect(page).to_not have_css('.recipe-title', text: "Receita 01")
+      expect(page).to have_css('.recipe-title', text: 'Receita 21')
+      expect(page).to have_css('.recipe-title', text: 'Receita 20')
+      expect(page).to have_css('.recipe-title', text: 'Receita 19')
+      expect(page).to have_css('.recipe-title', text: 'Receita 10')
+      expect(page).to have_css('.recipe-title', text: 'Receita 02')
+      expect(page).to_not have_css('.recipe-title', text: 'Receita 01')
     end
   end
 
   scenario 'and sees the 3 most favorited recipes' do
-    #setup
+    # setup
     cuisine = create(:cuisine)
-    kind    = create(:kind)
-    fav_factor  = [5,1,7,3,2,2,8,4,9,8]
+    kind = create(:kind)
+    fav_factor = [5, 1, 7, 3, 2, 2, 8, 4, 9, 8]
     recipes = []
 
     ## First, lets create tons of users.
     50.times do |n|
-      create(:user, name: "User #{n+1}",
-              email: "email#{n+1}@example.com")
+      create(:user, name: "User #{n + 1}",
+                    email: "email#{n + 1}@example.com")
     end
 
     ## Some of them has created a recipe...
     10.times do |n|
-      recipes[n] = create(:recipe, title: "Recipe #{n+1}",
-              cuisine: cuisine, kind: kind,
-              user: User.find_by(id: n+1))
+      recipes[n] = create(:recipe, title: "Recipe #{n + 1}",
+                                   cuisine: cuisine, kind: kind,
+                                   user: User.find_by(id: n + 1))
 
       ## ... and others have favorited some of them
-      k = fav_factor[n];
+      k = fav_factor[n]
 
       40.times do |m|
-        if m % k == 0
-          user = User.find_by(id: (m+1)+10)
-          FavoritedRecipe.create( favorite_id: recipes[n].id,
-                                  follower_id: user.id)
-        end
+        next if (m % k).positive?
+        user = User.find_by(id: (m + 1) + 10)
+        FavoritedRecipe.create(favorite_id: recipes[n].id,
+                               follower_id: user.id)
       end
     end
 
-    #exercise
+    # exercise
     visit recipes_path
 
-    #expectation
+    # expectation
     within('#receitas-favoritas') do
       expect(page).to have_content recipes[1].title
       expect(page).to have_content recipes[4].title

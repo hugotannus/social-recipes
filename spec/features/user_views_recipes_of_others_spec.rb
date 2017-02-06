@@ -2,31 +2,31 @@ require 'rails_helper'
 
 feature 'User views recipes of others' do
   scenario 'successfully' do
-    #setup
+    # setup
     recipe = recipe_from_another_user
     favorites_count = recipe.followers.all.size
 
     user = authenticate
 
-    #exercise
+    # exercise
     visit recipe_path recipe
 
-    #expectation
+    # expectation
     expect(page).to have_css('h2', text: "#{recipe.title}")
     expect(page).to have_content "Enviado por #{recipe.user.name}"
   end
 
   scenario 'and expect to see favorite button' do
-    #setup
+    # setup
     recipe = recipe_from_another_user
     favorites_count = recipe.followers.all.size
 
     user = authenticate
 
-    #exercise
+    # exercise
     visit recipe_path recipe
 
-    #expectation
+    # expectation
     expect(page).to have_content "receita favorita"
   end
 

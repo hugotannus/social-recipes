@@ -3,7 +3,7 @@ require 'carrierwave_helper'
 
 feature 'User sends a new recipe' do
   scenario 'successfully' do
-    #setup
+    # setup
     cuisine = Cuisine.create(name: 'brasileira')
     kind    = Kind.create(name: 'sobremesas')
     image   = Rack::Test::UploadedFile.new(
@@ -25,7 +25,7 @@ feature 'User sends a new recipe' do
                           picture: image
                         )
 
-      #exercise
+      # exercise
       visit new_recipe_path
 
       fill_in 'Título',           with: recipe.title
@@ -40,7 +40,7 @@ feature 'User sends a new recipe' do
 
       click_on 'Criar Receita'
 
-      #expectations
+      # expectations
       expect(page).to have_css('h2', text: recipe.title)
       expect(page).to have_content recipe.cuisine.name
       expect(page).to have_content recipe.kind.name

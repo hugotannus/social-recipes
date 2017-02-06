@@ -2,26 +2,26 @@ require 'rails_helper'
 
 feature 'Admin creates a new cuisine' do
   scenario 'successfully' do
-    #setup
+    # setup
     cuisine = Cuisine.new( name:'Francesa' )
 
-    #exercise
+    # exercise
     visit new_cuisine_path
 
     fill_in 'Nome', with: cuisine.name
     click_on 'Criar Cozinha'
 
-    #expectation
+    # expectation
     expect(page).to have_content 'Cozinha'
     expect(page).to have_content cuisine.name.downcase
   end
 
   scenario 'and should fill all fields' do
-    #exercise
+    # exercise
     visit new_cuisine_path
     click_on 'Criar Cozinha'
 
-    #expectation
+    # expectation
     expect(page).to have_content 'Não foi possível criar a cozinha.'
   end
 

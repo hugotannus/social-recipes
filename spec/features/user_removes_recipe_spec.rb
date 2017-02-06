@@ -2,16 +2,16 @@ require 'rails_helper'
 
 feature 'User removes recipe' do
   scenario 'successfully' do
-    #setup
+    # setup
     user = authenticate
     recipe = create(:recipe, user: user)
 
-    #exercise
+    # exercise
     visit recipe_path(recipe)
 
     click_on 'apagar'
 
-    #expectation
+    # expectation
     expect(page).to have_content "Receita '#{recipe.title}' apagada com sucesso!"
   end
 

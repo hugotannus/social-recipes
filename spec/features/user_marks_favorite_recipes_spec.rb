@@ -2,31 +2,31 @@ require 'rails_helper'
 
 feature 'User marks favorite recipe' do
   scenario 'successfully' do
-    #setup
+    # setup
     recipe = recipe_from_another_user
     favorites_count = recipe.followers.all.size
 
     user = authenticate
 
-    #exercise
+    # exercise
     visit recipe_path recipe
 
     click_button 'receita favorita'
 
-    #expectation
+    # expectation
     # expect(page).to have_css('favorite_counter', text: "#{favorites_count + 1}")
     expect(page).to have_content "#{favorites_count + 1} curtidas"
 
   end
 
   scenario 'and unmark it back' do
-    #setup
+    # setup
     recipe = recipe_from_another_user
 
     someone_favorites_another_user_recipe recipe
     favorites_count = recipe.followers.all.size
 
-    #exercise
+    # exercise
     user = authenticate
 
     visit recipe_path recipe
@@ -34,7 +34,7 @@ feature 'User marks favorite recipe' do
     click_button 'receita favorita' # first click to favorite a recipe
     click_button 'receita favorita' # second clcick to unfavorite back
 
-    #expectations
+    # expectations
     expect(page).to have_content "#{favorites_count} curtidas"
   end
 

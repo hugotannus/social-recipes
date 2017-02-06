@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User updates his profile' do
   scenario 'successfully' do
-    user = authenticate
+    user = create(:user)
+    authenticate(user)
 
     within 'header' do
       click_on user.name
@@ -37,17 +38,15 @@ feature 'User updates his profile' do
 
   scenario 'just if he is inside you own profile' do
     user = create(:user, name:'Fulano', email:'fulano@exemplo.com')
-    another = authenticate
+    authenticate(create(:user))
 
     visit edit_user_path user
 
-    expect(page).to have_content 'O que você pensa que está fazendo??? VAZA, maluco!!!'
+    expect(page).to have_content 'O que pensa que está fazendo??? VAZA, maluco!'
     expect(page).to have_current_path root_path
   end
 
-  def authenticate
-    user = create(:user)
-
+  def authenticate (user)
     visit login_path
 
     within 'main' do
@@ -60,7 +59,5 @@ feature 'User updates his profile' do
     within 'main' do
       click_on 'Entrar'
     end
-
-    user
   end
 end
