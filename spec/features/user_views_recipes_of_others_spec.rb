@@ -52,6 +52,6 @@ feature 'User views recipes of others' do
   def recipe_from_another_user
     another = create(:user, name: 'Fulano', email:'anoher@example.com')
 
-    recipe = create(:recipe, user: another)
+    create(:recipe, user: another)
   end
 end

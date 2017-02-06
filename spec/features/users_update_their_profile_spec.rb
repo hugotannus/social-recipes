@@ -21,7 +21,7 @@ feature 'User updates his profile' do
   end
 
   scenario 'and should see an oops message case not' do
-    user = create(:user, name:'Fulano', email:'fulano@exemplo.com')
+    user = create(:user, name: 'Fulano', email: 'fulano@exemplo.com')
 
     visit edit_user_path user
 
@@ -29,7 +29,7 @@ feature 'User updates his profile' do
   end
 
   scenario 'and should be redirected to login page case not logged yet' do
-    user = create(:user, name:'Fulano', email:'fulano@exemplo.com')
+    user = create(:user, name: 'Fulano', email: 'fulano@exemplo.com')
 
     visit edit_user_path user
 
@@ -37,7 +37,7 @@ feature 'User updates his profile' do
   end
 
   scenario 'just if he is inside you own profile' do
-    user = create(:user, name:'Fulano', email:'fulano@exemplo.com')
+    user = create(:user, name: 'Fulano', email: 'fulano@exemplo.com')
     authenticate(create(:user))
 
     visit edit_user_path user
@@ -46,7 +46,7 @@ feature 'User updates his profile' do
     expect(page).to have_current_path root_path
   end
 
-  def authenticate (user)
+  def authenticate(user)
     visit login_path
 
     within 'main' do
