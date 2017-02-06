@@ -47,10 +47,14 @@
       </div>
       <div class="col-md-7">
         <div id="ilustration">
-          <% if @recipe.picture.ilustration.file.exists? %>
+          <% if !@recipe.picture.ilustration.file.nil? %>
             <%= image_tag @recipe.picture.ilustration %>
-          <% elsif @recipe.picture.small.file.exists? %>
+          <% elsif !@recipe.picture.small.file.nil? %>
             <%= image_tag @recipe.picture.small %>
+          <% else %>
+           <img class="media-object"
+            src="http://ridgecrest-ca.gov/uploadedImages/Departments/Admin/noImageAvailable.jpg"
+            alt="<%= @recipe.title %>">
           <% end %>
         </div>
       </div>
