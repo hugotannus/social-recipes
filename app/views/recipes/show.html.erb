@@ -10,25 +10,28 @@
       <div class="col-md-5">
         <h2>
           <%= @recipe.title %>
-          <p>
             <% if @recipe.user == current_user %>
-              <%= link_to edit_recipe_url @recipe do %>
-                <%= fa_icon 'edit', text: "editar", right: true %>
-              <% end %>&nbsp;|&nbsp;
-              <%= link_to @recipe, method: 'delete',
-                  data: {confirm: 'Tem certeza de que deseja excluir essa receita?'} do %>
-                <%= fa_icon 'trash-o', text: "apagar", right: true  %>
-              <% end %>
+              <p>
+                <%= link_to edit_recipe_url @recipe do %>
+                  <%= fa_icon 'edit', text: "editar", right: true %>
+                <% end %>&nbsp;|&nbsp;
+                <%= link_to @recipe, method: 'delete',
+                    data: {confirm: 'Tem certeza de que deseja excluir essa receita?'} do %>
+                  <%= fa_icon 'trash-o', text: "apagar", right: true  %>
+                <% end %>
+              </p>
             <% else %>
-              Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %>
-              <%= render 'favorite_form' if logged_in?%>
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>
+                    Enviado por <%= link_to @recipe.user.name, user_url(@recipe.user) %>
+                  </p>
+                </div>
+                <div class="col-sm-6">
+                  <%= render 'favorite_form' if logged_in?%>
+                </div>
+              </div>
             <% end %>
-          </p>
-          <% if @recipe.followers.any? %>
-            <p id="favorite_counter">
-              <%= @recipe.followers.size %> curtidas
-            </p>
-          <% end %>
         </h2>
         <dl class="dl-horizontal">
           <dt>Tipo</dt>

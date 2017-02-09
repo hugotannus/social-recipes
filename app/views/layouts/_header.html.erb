@@ -24,10 +24,18 @@
                 <%= fa_icon "caret-down", text: "#{current_user.name}", right: true %>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Minhas receitas", '#' %></li>
-                <li><%= link_to "Editar perfil", edit_user_url(current_user) %></li>
+                <li>
+                  <%= link_to "Ver Perfil", user_url(current_user) %>
+                </li>
+                <li>
+                  <%= link_to "Editar perfil", edit_user_url(current_user) %>
+                </li>
+
                 <li role="separator" class="divider"></li>
-                <li><%= link_to "Sair", logout_path, method: 'delete' %></li>
+
+                <li>
+                  <%= link_to "Sair", logout_path, method: 'delete' %>
+                </li>
               </ul>
             </li>
           <% else %>
