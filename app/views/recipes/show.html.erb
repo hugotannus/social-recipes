@@ -51,11 +51,11 @@
       <div class="col-md-7">
         <div id="ilustration">
           <% if !@recipe.picture.ilustration.file.nil? %>
-            <%= image_tag @recipe.picture.ilustration %>
+            <%= image_tag @recipe.picture.ilustration, class:"img-thumbnail" %>
           <% elsif !@recipe.picture.small.file.nil? %>
-            <%= image_tag @recipe.picture.small %>
+            <%= image_tag @recipe.picture.small, class:"img-thumbnail" %>
           <% else %>
-           <img class="media-object"
+           <img class=""
             src="http://ridgecrest-ca.gov/uploadedImages/Departments/Admin/noImageAvailable.jpg"
             alt="<%= @recipe.title %>">
           <% end %>

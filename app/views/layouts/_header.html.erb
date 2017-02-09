@@ -2,7 +2,7 @@
   <nav class="navbar navbar-fixed-top", role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <%= link_to "Social Recipe", '#',  id: "logo", class:'navbar-brand' %>
+        <%= link_to "Social Recipe", root_path,  id: "logo", class:'navbar-brand' %>
       </div>
       <div class="collapse navbar-collapse">
         <%= form_tag search_recipes_path, method: :get, class:'navbar-form navbar-left' do %>

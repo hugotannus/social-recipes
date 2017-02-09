@@ -11,6 +11,7 @@ gem 'puma', '~> 3.0'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'sass-rails', '~> 5.0'
+# gem 'google-webfonts-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby

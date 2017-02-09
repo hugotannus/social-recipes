@@ -35,7 +35,7 @@ mary = User.create(name: 'Mary Jane',
                   password: 'mary123',
                   password_confirmation: 'mary123')
 
-fries = user.recipes.create( title: 'Spider fries',
+fries = mary.recipes.create( title: 'Spider fries',
                       cuisine: norte-americana,
                       kind: entradas,
                       portions: 4,
@@ -48,14 +48,14 @@ fries = user.recipes.create( title: 'Spider fries',
                       directions: '1. Refogue o bacon em uma frigideira separada.
                         Escorra o óleo.\n
                         2. Frite a batata e coloque em uma tigela média.\n
-                        Cubra a batata com uma generosa camada de bacon.
+                        3. Cubra a batata com uma generosa camada de bacon.\n
                         Em seguida, cubra a camada de bacon com outra generosa
-                        camada de queijo ralado. Leve a tigela ao forno
-                        pré-aquecido. Deixe de 1 a 3 minutos no forno, até que o
-                         queijo derreta por completo.'
+                        camada de queijo ralado.\n
+                        4. Leve a tigela ao forno pré-aquecido. Deixe de 1 a 3
+                        minutos no forno, até que o queijo derreta por completo.'
                      )
 
-pudim = user.recipes.create( title: 'pudim',
+pudim = mary.recipes.create( title: 'Pudim gringo',
                       cuisine: brasileira,
                       kind: sobremesas,
                       portions: 6,
@@ -75,4 +75,24 @@ pudim = user.recipes.create( title: 'pudim',
                       7. Leve ao microondas na temperatura máxima por 9 a 10 minutos\n
                       8. Retire do microondas e deixe esfriar\n
                       9. Leve à geladeira'
+                    )
+
+bolo = john.recipes.create( title: 'Bolo de cenoura',
+                      cuisine: brasileira,
+                      kind: bolos,
+                      portions: 16,
+                      preparation: 60,
+                      difficulty: 'fácil'
+                      ingredients: '- cenouras\n
+                      - leite\n
+                      - 3 ovos\n
+                      - 1/2 colher de chá de fermento em pó\n
+                      - açúcar\n
+                      - margarina\n
+                      - chocolate em pó / achocolatado'
+                      directions: '1. Misture tudo, menos o chocolate em pó / achocolatado.\n
+                      2. Unte a forma, despeje a massa e bote pra assar por 40 minutos.\n
+                      #### Cobertura\n
+                      - Faça a cobertura com o achocolatado, leite e margarina. Coloque a cobertura logo após tirar o bolo do forno, enquanto estiver quente.\n
+                      Sucesso!'
                     )
