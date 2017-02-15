@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
                         password_confirmation: 'foopswd')
 
     expect(user1.authenticate('foo')).to be false
-    expect(user1.authenticate('foopswd')).to be user
+    expect(user1.authenticate('foopswd')).to be user1
   end
 
   it 'name shoud not be too short' do

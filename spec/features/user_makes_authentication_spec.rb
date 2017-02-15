@@ -19,7 +19,7 @@ feature 'User makes authentication' do
 
     expect(page).to have_content "Seja bem-vind@, #{john.name}!"
     expect(page).to have_current_path user_path(john)
-    # expect(page).to have_current_path root_path
+    # expect(page).to have_current_path recipes_path
     expect(page).to have_content john.name
     expect(page).to have_content john.email
 end

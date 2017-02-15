@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       log_in user
 
       flash[:success] = "Seja bem-vind@, #{user.name}!"
-      redirect_to recipes_path
+      redirect_to user
     else
       flash.now[:danger] = 'Usuário e/ou senha inválido(s).'
       render :new

@@ -88,7 +88,7 @@ class RecipesController < ApplicationController
   def correct_user
     @user = Recipe.find(params[:id]).user
     unless current_user? @user
-      flash[:danger] = 'O que você pensa que está fazendo??? VAZA, maluco!!!'
+      flash[:danger] = 'O que pensa que está fazendo??? VAZA, maluco!'
       redirect_to root_url
     end
   end

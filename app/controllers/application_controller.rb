@@ -2,11 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
-
-  def show
-    @kinds = Kind.all
-  end
-
+  
   private
 
   def logged_in_user
@@ -19,7 +15,7 @@ class ApplicationController < ActionController::Base
   def correct_user
     @user = User.find(params[:id])
     unless current_user? @user
-      flash[:danger] = 'O que você pensa que está fazendo??? VAZA, maluco!!!'
+      flash[:danger] = 'O que pensa que está fazendo??? VAZA, maluco!'
       redirect_to root_url
     end
   end

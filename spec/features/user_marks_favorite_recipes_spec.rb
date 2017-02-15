@@ -15,7 +15,7 @@ feature 'User marks favorite recipe' do
 
     # expectation
     # expect(page).to have_css('favorite_counter', text: "#{favorites_count + 1}")
-    expect(page).to have_content "#{favorites_count + 1} curtidas"
+    expect(page).to have_content "Favorita de #{favorites_count + 1} usuário(s)"
 
   end
 
@@ -35,7 +35,7 @@ feature 'User marks favorite recipe' do
     click_button 'receita favorita' # second clcick to unfavorite back
 
     # expectations
-    expect(page).to have_content "#{favorites_count} curtidas"
+    expect(page).to have_content "Favorita de #{favorites_count} usuário(s)"
   end
 
   def authenticate
