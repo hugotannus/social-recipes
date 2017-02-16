@@ -21,7 +21,7 @@ feature 'User views recipes by cuisine' do
     cuisine_2 = create(:cuisine, name: 'italiana')
 
     recipe_a = create(:recipe,
-                      title: 'Receita 1',
+                      title: 'Receita A',
                       cuisine: cuisine_1)
     recipe_b = create(:recipe, cuisine: cuisine_2,
                                kind: recipe_a.kind,

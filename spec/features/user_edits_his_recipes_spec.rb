@@ -35,6 +35,42 @@ feature 'User edits his recipes' do
     expect(page).to have_current_path root_path
   end
 
+  scenario 'and should have a title' do
+    user = authenticate
+    recipe = create(:recipe, user: user)
+
+    visit edit_recipe_path recipe
+
+    fill_in 'Título', with: ''
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Não foi possível atualizar a receita.'
+  end
+
+  scenario 'and should have some ingredient' do
+    user = authenticate
+    recipe = create(:recipe, user: user)
+
+    visit edit_recipe_path recipe
+
+    fill_in 'Ingredientes', with: ''
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Não foi possível atualizar a receita.'
+  end
+
+  scenario 'and should have directions' do
+    user = authenticate
+    recipe = create(:recipe, user: user)
+
+    visit edit_recipe_path recipe
+
+    fill_in 'Modo de preparo', with: ''
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Não foi possível atualizar a receita.'
+  end
+
   def authenticate
     user = create(:user)
 

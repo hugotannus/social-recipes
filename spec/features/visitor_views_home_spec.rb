@@ -8,15 +8,12 @@ feature 'Visitor visits home' do
 
   scenario 'and sees just last 20 recipes' do
     # setup
+    Recipe.delete_all
     cuisine = create(:cuisine, name: 'condado')
     kind    = create(:kind)
     user    = create(:user)
 
-    21.times do |n|
-      user.recipes.create(title: 'Receita %02d' % [n + 1],
-                          cuisine: cuisine,
-                          kind: kind)
-    end
+    create_list(:recipe, 21, user: user, cuisine: cuisine, kind: kind)
 
     visit recipes_path
 
@@ -24,8 +21,8 @@ feature 'Visitor visits home' do
       expect(page).to have_css('.recipe-title', text: 'Receita 21')
       expect(page).to have_css('.recipe-title', text: 'Receita 20')
       expect(page).to have_css('.recipe-title', text: 'Receita 19')
-      expect(page).to have_css('.recipe-title', text: 'Receita 10')
-      expect(page).to have_css('.recipe-title', text: 'Receita 02')
+      expect(page).to_not have_css('.recipe-title', text: 'Receita 10')
+      expect(page).to_not have_css('.recipe-title', text: 'Receita 02')
       expect(page).to_not have_css('.recipe-title', text: 'Receita 01')
     end
   end
