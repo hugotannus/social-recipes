@@ -26,7 +26,6 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
 Metrics/MethodLength:
   CountComments: false  # count full line comments?
-  Max: 25
   Exclude:
     - 'Rakefile'
     - '**/*.rake'
