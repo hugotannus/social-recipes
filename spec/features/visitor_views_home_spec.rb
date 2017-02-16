@@ -21,8 +21,8 @@ feature 'Visitor visits home' do
       expect(page).to have_css('.recipe-title', text: 'Receita 21')
       expect(page).to have_css('.recipe-title', text: 'Receita 20')
       expect(page).to have_css('.recipe-title', text: 'Receita 19')
-      expect(page).to_not have_css('.recipe-title', text: 'Receita 10')
-      expect(page).to_not have_css('.recipe-title', text: 'Receita 02')
+      expect(page).to have_css('.recipe-title', text: 'Receita 10')
+      expect(page).to have_css('.recipe-title', text: 'Receita 02')
       expect(page).to_not have_css('.recipe-title', text: 'Receita 01')
     end
   end
