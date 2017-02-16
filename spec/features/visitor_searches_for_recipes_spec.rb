@@ -8,9 +8,7 @@ feature 'Visitor searches for recipes' do
     fill_in 'search', with: 'sopa de letrinhas'
     click_on 'buscar'
 
-    expect(page).to have_content(
-      'Econtrado(s) 1 resultado(s) para sopa de letrinhas.'
-    )
+    expect(page).to have_content '1 resultado(s) para sopa de letrinhas.'
   end
 
   scenario 'and matches all recipes with the same substring' do
@@ -20,7 +18,7 @@ feature 'Visitor searches for recipes' do
     fill_in 'search', with: 'sopa'
     click_on 'buscar'
 
-    expect(page).to have_content 'Econtrado(s) 2 resultado(s) para sopa.'
+    expect(page).to have_content '2 resultado(s) para sopa.'
     expect(page).to have_content 'Sopa de letrinhas'
     expect(page).to have_content 'Ensopado de peixe'
     expect(page).to_not have_content 'Sopinha de legumes'
@@ -33,7 +31,7 @@ feature 'Visitor searches for recipes' do
     fill_in 'search', with: 'soup'
     click_on 'buscar'
 
-    expect(page).to have_content 'Não foi econtrado nenhum resultado para soup.'
+    expect(page).to have_content 'Nenhum resultado para soup.'
     expect(page).to_not have_content 'Sopa de letrinhas'
     expect(page).to_not have_content 'Ensopado de peixe'
     expect(page).to_not have_content 'Sopinha de legumes'

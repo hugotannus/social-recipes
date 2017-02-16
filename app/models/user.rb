@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  # VALID_FB_REGEX = /\A(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w\-]*\/)*([\w\-\.]*)\z/i
 
   has_secure_password
   has_many :recipes
@@ -8,11 +7,11 @@ class User < ApplicationRecord
   has_many :favorited_recipes, foreign_key: 'follower_id'
   has_many :favorites, through: :favorited_recipes
 
-  before_save { self.city  = city.titlecase }
+  before_save { self.city  = city.titlecase unless city.nil? }
   before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
-  validates :city, :password, :password_confirmation, presence: true
+  validates :password, :password_confirmation, presence: true
   validates :email, presence: true, uniqueness: true,
                     length: { minimum: 8, maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
@@ -20,5 +19,4 @@ class User < ApplicationRecord
   def favorited?(recipe)
     !favorites.find_by(id: recipe).nil?
   end
-
 end

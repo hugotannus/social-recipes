@@ -6,8 +6,8 @@ class RecipesController < ApplicationController
   MOST_FAVORITES_AMOUNT = 5
 
   def index
-    @recipes    = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
-    @favorites  = Recipe.all.sort_by {
+    @recipes = Recipe.order(created_at: :desc).take(LAST_RECIPES_AMOUNT)
+    @favorites = Recipe.all.sort_by {
                     |recipe| recipe.followers.count
                   }.reverse.take(MOST_FAVORITES_AMOUNT)
   end
@@ -35,9 +35,12 @@ class RecipesController < ApplicationController
 
   def search
     @recipes = Recipe.all.select { |recipe| recipe.include? params[:search] }
-    flash[:info]  = (@recipes.size > 0) ?
-      "Econtrado(s) #{@recipes.size} resultado(s) para #{params[:search]}." :
-      "Não foi econtrado nenhum resultado para #{params[:search]}."
+
+    found_message = "#{@recipes.size} resultado(s) para #{params[:search]}."
+    unfound_message = "Nenhum resultado para #{params[:search]}."
+
+    flash[:info] = @recipes.size.positive? ? found_message : unfound_message
+
     render :index
   end
 
@@ -88,9 +91,8 @@ class RecipesController < ApplicationController
   def correct_user
     @user = Recipe.find(params[:id]).user
     unless current_user? @user
-      flash[:danger] = 'O que pensa que está fazendo??? VAZA, maluco!'
+      flash[:danger] = 'Tá mexendo na receita dos outros??? VAZA, maluco!'
       redirect_to root_url
     end
   end
-
 end

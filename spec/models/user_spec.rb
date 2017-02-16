@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
     expect(user).not_to be_valid
     expect(user.errors[:name]).to include("can't be blank")
     expect(user.errors[:email]).to include("can't be blank")
-    expect(user.errors[:city]).to include("can't be blank")
     expect(user.errors[:password]).to include("can't be blank")
     expect(user.errors[:password_confirmation]).to include("can't be blank")
   end

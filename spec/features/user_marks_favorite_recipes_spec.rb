@@ -5,18 +5,16 @@ feature 'User marks favorite recipe' do
     # setup
     recipe = recipe_from_another_user
     favorites_count = recipe.followers.all.size
-
-    user = authenticate
+    message = "Favorita de #{favorites_count + 1} usuário(s)"
 
     # exercise
+    authenticate
     visit recipe_path recipe
 
     click_button 'receita favorita'
 
     # expectation
-    # expect(page).to have_css('favorite_counter', text: "#{favorites_count + 1}")
-    expect(page).to have_content "Favorita de #{favorites_count + 1} usuário(s)"
-
+    expect(page).to have_content message
   end
 
   scenario 'and unmark it back' do
@@ -27,7 +25,7 @@ feature 'User marks favorite recipe' do
     favorites_count = recipe.followers.all.size
 
     # exercise
-    user = authenticate
+    authenticate
 
     visit recipe_path recipe
 
@@ -58,14 +56,13 @@ feature 'User marks favorite recipe' do
   end
 
   def recipe_from_another_user
-    another = create(:user, name: 'Fulano', email:'anoher@example.com')
-
-    recipe = create(:recipe, user: another)
+    another = create(:user, name: 'Fulano', email: 'anoher@example.com')
+    create(:recipe, user: another)
   end
 
   def someone_favorites_another_user_recipe(recipe)
-    #authentication
-    third = create(:user, name: 'Beltrano', email:'beltrano@example.com')
+    # authentication
+    third = create(:user, name: 'Beltrano', email: 'beltrano@example.com')
 
     visit login_path
 
@@ -80,7 +77,7 @@ feature 'User marks favorite recipe' do
       click_on 'Entrar'
     end
 
-    #favoriting
+    # favoriting
     visit recipe_path recipe
     click_button 'receita favorita'
   end

@@ -23,6 +23,18 @@ feature 'User edits his recipes' do
     expect(page).to have_css('#preptime-value', text: '30 minutos')
   end
 
+  scenario 'just if it belongs to him' do
+    user = create(:user, name: 'Fulano', email: 'fulano@exemplo.com')
+    recipe = create(:recipe, user: user)
+    vaza_maluco = 'Tá mexendo na receita dos outros??? VAZA, maluco!'
+
+    authenticate
+    visit edit_recipe_path recipe
+
+    expect(page).to have_content vaza_maluco
+    expect(page).to have_current_path root_path
+  end
+
   def authenticate
     user = create(:user)
 

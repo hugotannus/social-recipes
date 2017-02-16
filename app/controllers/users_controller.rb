@@ -14,11 +14,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # debugger
+    msg = "Parabéns, #{@user.name}! Você criou sua conta no Social Recipes."
 
     if @user.save
       log_in @user
-      flash[:success] = "Parabéns, #{@user.name}! Você acaba de criar sua conta no Social Recipes."
+      flash[:success] = msg
       redirect_to @user
     else
       flash.now[:danger] = 'Erro: não foi possível cadastrar usuário.'
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      flash[:success] = "Perfil atualizado com sucesso!"
+      flash[:success] = 'Perfil atualizado com sucesso!'
       redirect_to @user
     else
       flash.now[:danger] = 'Erro: não foi possível atualizar dados.'
@@ -43,31 +43,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def recipes
-    @user = current_user
-  end
+  def recipes; end
 
   private
 
-    def user_params
-      params.require(:user).permit(
-        :name, :email, :city, :facebook, :twitter,
-        :password, :password_confirmation
-      )
-    end
-
-    # def logged_in_user
-    #   unless logged_in?
-    #     flash[:danger] = 'Oops! Parece que você não está logado...'
-    #     redirect_to login_url
-    #   end
-    # end
-
-    # def correct_user
-    #   @user = User.find(params[:id])
-    #   unless current_user? @user
-    #     flash[:danger] = 'O que pensa que está fazendo??? VAZA, maluco!'
-    #     redirect_to root_url
-    #   end
-    # end
+  def user_params
+    params.require(:user).permit(
+      :name, :email, :city, :facebook, :twitter,
+      :password, :password_confirmation
+    )
+  end
 end

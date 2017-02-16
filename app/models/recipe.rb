@@ -8,8 +8,7 @@ class Recipe < ApplicationRecord
 
   has_many :followers, through: :marks
 
-
-  enum difficulty: ['fácil', 'moderada', 'difícil']
+  enum difficulty: %w(fácil moderada difícil)
   mount_uploader :picture, PictureUploader
 
   def include?(term)
